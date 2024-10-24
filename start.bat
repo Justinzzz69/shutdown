@@ -16,15 +16,15 @@ echo [5] Calculator (in sec)
 echo ===========================
 echo.
 
-set /p "Wahl=Choose an option: "
+set /p "choice=Choose an option: "
 
-if '%Wahl%'=='1' goto shutdown
-if '%Wahl%'=='2' goto reboot
-if '%Wahl%'=='3' goto logout
-if '%Wahl%'=='4' goto cancel
-if '%Wahl%'=='5' goto calculator
+if '%choice%'=='1' goto shutdown
+if '%choice%'=='2' goto reboot
+if '%choice%'=='3' goto logout
+if '%choice%'=='4' goto cancel
+if '%choice%'=='5' goto calculator
 color 4F
-echo Ungültige Wahl. Bitte eine Zahl zwischen 1 und 5 eingeben.
+echo Invalid option. Please enter a number between 1 and 5.
 pause
 goto main
 
@@ -34,11 +34,11 @@ cls
 echo ===========================
 echo        Shutdown Setup      
 echo ===========================
-set /p "Time=Shutdown Zeit in Sekunden: "
-echo Zeit bis zum Herunterfahren: %Time% Sekunden
+set /p "time=Shutdown time in seconds: "
+echo Time until shutdown: %time% seconds
 echo.
-echo "Bitte speichern Sie alle offenen Dateien!"
-shutdown -s -f -t %Time%
+echo "Please save all open files!"
+shutdown -s -f -t %time%
 pause
 goto main
 
@@ -48,9 +48,9 @@ cls
 echo ===========================
 echo        Reboot Setup        
 echo ===========================
-set /p "Time=Reboot in Sekunden: "
-echo Der Computer startet in %Time% Sekunden neu.
-shutdown -r -t %Time%
+set /p "time=Reboot time in seconds: "
+echo The computer will reboot in %time% seconds.
+shutdown -r -t %time%
 pause
 goto main
 
@@ -62,7 +62,7 @@ goto main
 :cancel
 color 6E
 shutdown -a
-echo Shutdown abgebrochen.
+echo Shutdown cancelled.
 pause
 goto main
 
@@ -70,32 +70,32 @@ goto main
 cls
 color 1F
 echo ===========================
-echo    Zeit-Konvertierung      
+echo       Time Conversion      
 echo ===========================
-echo [1] Stunden in Sekunden
-echo [2] Minuten in Sekunden
+echo [1] Hours to seconds
+echo [2] Minutes to seconds
 echo ===========================
-set /p "wahl2=Choose an option: "
-if '%wahl2%'=='1' goto stunden
-if '%wahl2%'=='2' goto minuten
+set /p "choice2=Choose an option: "
+if '%choice2%'=='1' goto hours
+if '%choice2%'=='2' goto minutes
 goto main
 
-:stunden
+:hours
 color 3F
 cls
-echo Gib die Anzahl der Stunden ein:
-set /p "stunden=Stunden: "
-set /a sekunden=%stunden%*3600
-echo %stunden% Stunden sind %sekunden% Sekunden.
+echo Enter the number of hours:
+set /p "hours=Hours: "
+set /a seconds=%hours%*3600
+echo %hours% hours are %seconds% seconds.
 pause
 goto main
 
-:minuten
+:minutes
 color 3F
 cls
-echo Gib die Anzahl der Minuten ein:
-set /p "minuten=Minuten: "
-set /a sekunden=%minuten%*60
-echo %minuten% Minuten sind %sekunden% Sekunden.
+echo Enter the number of minutes:
+set /p "minutes=Minutes: "
+set /a seconds=%minutes%*60
+echo %minutes% minutes are %seconds% seconds.
 pause
 goto main
